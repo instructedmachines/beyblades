@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Beyblade Burst Character Are You?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        .question {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            margin: 5px 0;
+        }
+        button {
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+        #result {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Which Beyblade Burst Character Are You?</h1>
+    <div id="quiz">
+        <!-- Questions will be inserted here by JavaScript -->
+    </div>
+    <button id="submit" style="display:none;">Get Your Result</button>
+    <div id="result" style="display:none;"></div>
+
+    <script>
+        const questions = [
+            {
+                question: "How do you approach a challenging situation?",
+                options: [
+                    "With enthusiasm and determination",
+                    "Calmly and strategically",
+                    "Head-on, without hesitation",
+                    "Confidently, relying on my skills",
+                    "As an opportunity to prove my strength"
+                ]
+            },
+            {
+                question: "What's your preferred battling style?",
+                options: [
+                    "Adapting and improving as I go",
+                    "Carefully planned and executed",
+                    "Aggressive and powerful",
+                    "Unconventional and unpredictable",
+                    "Overwhelming force and technique"
+                ]
+            },
+            {
+                question: "How do you view your opponents?",
+                options: [
+                    "As potential friends and rivals",
+                    "As challenges to overcome",
+                    "As obstacles in my path",
+                    "With respect, but from a distance",
+                    "As those who need to be defeated"
+                ]
+            },
+            {
+                question: "What motivates you to become stronger?",
+                options: [
+                    "The joy of the game and my friends",
+                    "The desire to be the best",
+                    "To prove myself to others",
+                    "Personal growth and independence",
+                    "To maintain my reputation as the strongest"
+                ]
+            },
+            {
+                question: "How do you handle losing?",
+                options: [
+                    "It motivates me to train harder",
+                    "I analyze what went wrong and improve",
+                    "It frustrates me, but I bounce back quickly",
+                    "I take it as a learning experience",
+                    "It's unacceptable, and I'll do anything to avoid it"
+                ]
+            }
+        ];
+
+        const characters = [
+            "Valt Aoi",
+            "Shu Kurenai",
+            "Rantaro Kiyama",
+            "Free De La Hoya",
+            "Lui Shirosagi"
+        ];
+
+        const characterDescriptions = [
+            "You're enthusiastic and determined, always ready to take on new challenges with a smile. Like Valt, you value friendship and have a never-give-up attitude that inspires those around you.",
+            "Cool, calm, and collected, you approach battles with strategy and precision. Like Shu, you're a natural leader with a mysterious aura that draws others to you.",
+            "Loyal and straightforward, you face challenges head-on. Like Rantaro, you're a dependable friend with a fiery spirit and a heart of gold.",
+            "Independent and confident, you march to the beat of your own drum. Like Free, you're skilled and mysterious, preferring to rely on your own strengths.",
+            "Powerful and proud, you strive to be the best in everything you do. Like Lui, you're intensely competitive and have the skills to back up your confidence."
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+        const submitButton = document.getElementById('submit');
+        const resultContainer = document.getElementById('result');
+
+        function buildQuiz() {
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+                questionDiv.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
+                
+                const optionsDiv = document.createElement('div');
+                optionsDiv.classList.add('options');
+                
+                question.options.forEach((option, optionIndex) => {
+                    const label = document.createElement('label');
+                    label.classList.add('option');
+                    label.innerHTML = `
+                        <input type="radio" name="question${index}" value="${optionIndex}">
+                        ${option}
+                    `;
+                    optionsDiv.appendChild(label);
+                });
+                
+                questionDiv.appendChild(optionsDiv);
+                quizContainer.appendChild(questionDiv);
+            });
+            
+            submitButton.style.display = 'block';
+        }
+
+        function showResults() {
+            const answerContainers = quizContainer.querySelectorAll('.options');
+            let characterScores = [0, 0, 0, 0, 0];
+
+            answerContainers.forEach((answerContainer, questionIndex) => {
+                const selectedOption = answerContainer.querySelector(`input[name="question${questionIndex}"]:checked`);
+                if (selectedOption) {
+                    characterScores[parseInt(selectedOption.value)]++;
+                }
+            });
+
+            const maxScore = Math.max(...characterScores);
+            const characterIndex = characterScores.indexOf(maxScore);
+
+            resultContainer.innerHTML = `
+                <h2>You are most like ${characters[characterIndex]}!</h2>
+                <p>${characterDescriptions[characterIndex]}</p>
+            `;
+            resultContainer.style.display = 'block';
+            submitButton.style.display = 'none';
+        }
+
+        buildQuiz();
+
+        submitButton.addEventListener('click', showResults);
+    </script>
+</body>
+</html>
