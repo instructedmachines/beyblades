@@ -67,53 +67,153 @@
     <script>
         const questions = [
             {
-                question: "How do you approach a challenging situation?",
+                question: "How do you feel when you lose a battle?",
                 options: [
-                    "With enthusiasm and determination",
-                    "Calmly and strategically",
-                    "Head-on, without hesitation",
-                    "Confidently, relying on my skills",
-                    "As an opportunity to prove my strength"
+                    "I get sad but want to try harder next time",
+                    "I think about what went wrong and how to fix it",
+                    "I get angry and want to win right away",
+                    "I don't care much, it's just a game",
+                    "I feel like I should have won",
+                    "I get upset but try to learn from it",
+                    "I think it's not possible and must be a mistake",
+                    "I get mad and want to battle again right away",
+                    "I stay calm and think about my next move",
+                    "I don't like it and want to beat everyone next time"
                 ]
             },
             {
-                question: "What's your preferred battling style?",
+                question: "What's most important to you in a Beyblade battle?",
                 options: [
-                    "Adapting and improving as I go",
-                    "Carefully planned and executed",
-                    "Aggressive and powerful",
-                    "Unconventional and unpredictable",
-                    "Overwhelming force and technique"
+                    "Having fun with friends",
+                    "Using smart moves to win",
+                    "Showing how strong I am",
+                    "Being different from others",
+                    "Getting better and stronger",
+                    "Being the very best",
+                    "Having the best plan to win",
+                    "Having the strongest attack",
+                    "Being calm and focused",
+                    "Winning no matter what"
                 ]
             },
             {
-                question: "How do you view your opponents?",
+                question: "How do you act around other bladers?",
                 options: [
-                    "As potential friends and rivals",
-                    "As challenges to overcome",
-                    "As obstacles in my path",
-                    "With respect, but from a distance",
-                    "As those who need to be defeated"
+                    "I'm friendly and like to make new friends",
+                    "I'm quiet and watch how they play",
+                    "I challenge them to show I'm better",
+                    "I do my own thing and don't care what they think",
+                    "I try to learn from them to get better",
+                    "I want to be friends but also beat them",
+                    "I think about how to beat them",
+                    "I show off my strong moves",
+                    "I'm nice but focus on my own skills",
+                    "I see them as people I need to beat"
                 ]
             },
             {
-                question: "What motivates you to become stronger?",
+                question: "What's your favorite part of Beyblading?",
                 options: [
-                    "The joy of the game and my friends",
-                    "The desire to be the best",
-                    "To prove myself to others",
-                    "Personal growth and independence",
-                    "To maintain my reputation as the strongest"
+                    "Playing with friends and having fun",
+                    "Making plans to win battles",
+                    "Showing everyone how good I am",
+                    "Trying new and different ways to play",
+                    "Getting better and stronger every day",
+                    "The excitement of close battles",
+                    "Figuring out how to beat tough opponents",
+                    "The power of strong attacks",
+                    "The feeling when everything goes right",
+                    "Crushing my opponents and being the best"
                 ]
             },
             {
-                question: "How do you handle losing?",
+                question: "How do you train for Beyblade battles?",
                 options: [
-                    "It motivates me to train harder",
-                    "I analyze what went wrong and improve",
-                    "It frustrates me, but I bounce back quickly",
-                    "I take it as a learning experience",
-                    "It's unacceptable, and I'll do anything to avoid it"
+                    "I practice a lot with my friends",
+                    "I think about different ways to win",
+                    "I try to make my launches stronger",
+                    "I come up with new and surprising moves",
+                    "I work hard every day to get better",
+                    "I battle tough opponents to improve",
+                    "I study how others play and make plans",
+                    "I focus on making my attacks stronger",
+                    "I practice staying calm under pressure",
+                    "I push myself to be the absolute best"
+                ]
+            },
+            {
+                question: "What would you do if your Beyblade broke?",
+                options: [
+                    "Feel sad but know I can fix it",
+                    "Think about how to make it stronger",
+                    "Get upset and want a new one right away",
+                    "See it as a chance to try something new",
+                    "Work hard to fix it and make it better",
+                    "Be disappointed but excited to improve it",
+                    "Carefully plan how to fix and upgrade it",
+                    "Want to make it even more powerful",
+                    "Stay calm and think about what to do",
+                    "Get very angry and demand the best new parts"
+                ]
+            },
+            {
+                question: "How do you feel about making friends with other bladers?",
+                options: [
+                    "It's the best part of Beyblading!",
+                    "It's nice, but winning is more important",
+                    "I'd rather just show them I'm better",
+                    "I don't really care about making friends",
+                    "It's good to have rivals and friends",
+                    "I like having friends to battle with",
+                    "It's okay, but I prefer to focus on myself",
+                    "Friends are good for practicing",
+                    "I enjoy the company of other skilled bladers",
+                    "I don't need friends, only strong opponents"
+                ]
+            },
+            {
+                question: "What's your Beyblade style?",
+                options: [
+                    "Lots of energy and never giving up",
+                    "Careful planning and smart moves",
+                    "Super strong attacks",
+                    "Unusual and surprising techniques",
+                    "Always trying to be better than before",
+                    "A mix of power and smart battling",
+                    "Clever tricks to outsmart opponents",
+                    "Pure power and strong launches",
+                    "Calm and adaptable",
+                    "Overwhelming force to crush opponents"
+                ]
+            },
+            {
+                question: "What do you think about during a Beyblade battle?",
+                options: [
+                    "How much fun I'm having",
+                    "What my opponent might do next",
+                    "How I can hit harder",
+                    "New moves I can try",
+                    "How I can do better than last time",
+                    "How to win this battle",
+                    "The best way to beat my opponent",
+                    "Using all my power to win",
+                    "Staying focused and calm",
+                    "Defeating my opponent completely"
+                ]
+            },
+            {
+                question: "What's your biggest dream in Beyblading?",
+                options: [
+                    "To have fun and make lots of friends",
+                    "To be known as the smartest blader",
+                    "To be the strongest blader ever",
+                    "To create amazing new techniques",
+                    "To keep getting better every day",
+                    "To be the world champion",
+                    "To outsmart every opponent",
+                    "To have the most powerful Beyblade",
+                    "To master every aspect of Beyblading",
+                    "To defeat everyone and be the ultimate blader"
                 ]
             }
         ];
@@ -123,15 +223,25 @@
             "Shu Kurenai",
             "Rantaro Kiyama",
             "Free De La Hoya",
-            "Lui Shirosagi"
+            "Lui Shirosagi",
+            "Dante Koryu",
+            "Ranjiro Kiyama",
+            "Delta Zakuro",
+            "Lodin Haijima",
+            "Lane Valhalla"
         ];
 
         const characterDescriptions = [
-            "You're enthusiastic and determined, always ready to take on new challenges with a smile. Like Valt, you value friendship and have a never-give-up attitude that inspires those around you.",
-            "Cool, calm, and collected, you approach battles with strategy and precision. Like Shu, you're a natural leader with a mysterious aura that draws others to you.",
-            "Loyal and straightforward, you face challenges head-on. Like Rantaro, you're a dependable friend with a fiery spirit and a heart of gold.",
-            "Independent and confident, you march to the beat of your own drum. Like Free, you're skilled and mysterious, preferring to rely on your own strengths.",
-            "Powerful and proud, you strive to be the best in everything you do. Like Lui, you're intensely competitive and have the skills to back up your confidence."
+            "You're like Valt Aoi! You love Beyblading and having fun with friends. You never give up and always try your best.",
+            "You're like Shu Kurenai! You're calm and smart in battles. You make good plans and are a great leader.",
+            "You're like Rantaro Kiyama! You're strong and loyal. You face challenges head-on and are a good friend.",
+            "You're like Free De La Hoya! You're confident and do things your own way. You're very skilled and a bit mysterious.",
+            "You're like Lui Shirosagi! You're very strong and proud. You always want to be the best and work hard to stay on top.",
+            "You're like Dante Koryu! You're passionate about Beyblading and always want to get better. You feel like you should win, but you learn from losses.",
+            "You're like Ranjiro Kiyama! You're talented and strong, always trying to be the best. You enjoy having good rivals to battle against.",
+            "You're like Delta Zakuro! You believe in being the best and shine bright. You're great at making smart plans in battles.",
+            "You're like Lodin Haijima! You focus on being very strong and powerful. You like using strong launchers and powerful attacks.",
+            "You're like Lane Valhalla! You always want to be the best and don't mind if other Beys break. You care most about your own Bey and winning."
         ];
 
         const quizContainer = document.getElementById('quiz');
@@ -166,7 +276,7 @@
 
         function showResults() {
             const answerContainers = quizContainer.querySelectorAll('.options');
-            let characterScores = [0, 0, 0, 0, 0];
+            let characterScores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
             answerContainers.forEach((answerContainer, questionIndex) => {
                 const selectedOption = answerContainer.querySelector(`input[name="question${questionIndex}"]:checked`);
