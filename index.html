@@ -7,298 +7,127 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
         }
         h1 {
-            color: #0066cc;
+            color: #3366cc;
             text-align: center;
         }
         .question {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
+            background-color: white;
+            padding: 15px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-        }
-        .option {
-            margin: 5px 0;
+            border-radius: 10px;
         }
         button {
-            background-color: #0066cc;
-            color: #fff;
+            background-color: #3366cc;
+            color: white;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            border-radius: 5px;
             display: block;
             margin: 20px auto;
         }
-        button:hover {
-            background-color: #0052a3;
-        }
         #result {
-            background-color: #fff;
-            border-radius: 8px;
+            background-color: #e6f2ff;
             padding: 20px;
-            margin-top: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <h1>Which Beyblade Burst Character Are You?</h1>
     <div id="quiz">
-        <!-- Questions will be inserted here by JavaScript -->
+        <div class="question">
+            <p>1. How do you feel when you lose a battle?</p>
+            <input type="radio" name="q1" value="a"> I get upset, but it makes me want to train harder<br>
+            <input type="radio" name="q1" value="b"> I think about what went wrong and how to improve<br>
+            <input type="radio" name="q1" value="c"> I get frustrated, but I bounce back quickly<br>
+            <input type="radio" name="q1" value="d"> I see it as a chance to learn and grow<br>
+            <input type="radio" name="q1" value="e"> I don't like it, but I stay calm and think about getting better
+        </div>
+        <div class="question">
+            <p>2. What's most important to you in a beyblade battle?</p>
+            <input type="radio" name="q2" value="a"> Getting stronger and reaching the next level<br>
+            <input type="radio" name="q2" value="b"> Being the very best<br>
+            <input type="radio" name="q2" value="c"> Using smart plans to win<br>
+            <input type="radio" name="q2" value="d"> Having the most powerful attack<br>
+            <input type="radio" name="q2" value="e"> Showing off my skills and staying independent
+        </div>
+        <div class="question">
+            <p>3. How do you see other bladers?</p>
+            <input type="radio" name="q3" value="a"> As friends and rivals who make me better<br>
+            <input type="radio" name="q3" value="b"> As challenges to overcome<br>
+            <input type="radio" name="q3" value="c"> As opponents to outsmart<br>
+            <input type="radio" name="q3" value="d"> As targets for my strong attacks<br>
+            <input type="radio" name="q3" value="e"> With respect, but from far away
+        </div>
+        <div class="question">
+            <p>4. What's your favorite thing about beyblading?</p>
+            <input type="radio" name="q4" value="a"> The fun of the game and being with friends<br>
+            <input type="radio" name="q4" value="b"> The chance to be the best<br>
+            <input type="radio" name="q4" value="c"> Coming up with clever moves<br>
+            <input type="radio" name="q4" value="d"> The power of my bey<br>
+            <input type="radio" name="q4" value="e"> The challenge of tough battles
+        </div>
+        <div class="question">
+            <p>5. How do you prepare for a big battle?</p>
+            <input type="radio" name="q5" value="a"> Practice hard and get excited<br>
+            <input type="radio" name="q5" value="b"> Focus on being the best<br>
+            <input type="radio" name="q5" value="c"> Make plans for different situations<br>
+            <input type="radio" name="q5" value="d"> Work on my launch power<br>
+            <input type="radio" name="q5" value="e"> Stay calm and confident in my skills
+        </div>
+        <button onclick="showResult()">See My Result!</button>
     </div>
-    <button id="submit" style="display:none;">Get Your Result</button>
-    <div id="result" style="display:none;"></div>
+    <div id="result"></div>
 
     <script>
-        const questions = [
-            {
-                question: "How do you feel when you lose a battle?",
-                options: [
-                    "I get sad but want to try harder next time",
-                    "I think about what went wrong and how to fix it",
-                    "I get angry and want to win right away",
-                    "I don't care much, it's just a game",
-                    "I feel like I should have won",
-                    "I get upset but try to learn from it",
-                    "I think it's not possible and must be a mistake",
-                    "I get mad and want to battle again right away",
-                    "I stay calm and think about my next move",
-                    "I don't like it and want to beat everyone next time"
-                ]
-            },
-            {
-                question: "What's most important to you in a Beyblade battle?",
-                options: [
-                    "Having fun with friends",
-                    "Using smart moves to win",
-                    "Showing how strong I am",
-                    "Being different from others",
-                    "Getting better and stronger",
-                    "Being the very best",
-                    "Having the best plan to win",
-                    "Having the strongest attack",
-                    "Being calm and focused",
-                    "Winning no matter what"
-                ]
-            },
-            {
-                question: "How do you act around other bladers?",
-                options: [
-                    "I'm friendly and like to make new friends",
-                    "I'm quiet and watch how they play",
-                    "I challenge them to show I'm better",
-                    "I do my own thing and don't care what they think",
-                    "I try to learn from them to get better",
-                    "I want to be friends but also beat them",
-                    "I think about how to beat them",
-                    "I show off my strong moves",
-                    "I'm nice but focus on my own skills",
-                    "I see them as people I need to beat"
-                ]
-            },
-            {
-                question: "What's your favorite part of Beyblading?",
-                options: [
-                    "Playing with friends and having fun",
-                    "Making plans to win battles",
-                    "Showing everyone how good I am",
-                    "Trying new and different ways to play",
-                    "Getting better and stronger every day",
-                    "The excitement of close battles",
-                    "Figuring out how to beat tough opponents",
-                    "The power of strong attacks",
-                    "The feeling when everything goes right",
-                    "Crushing my opponents and being the best"
-                ]
-            },
-            {
-                question: "How do you train for Beyblade battles?",
-                options: [
-                    "I practice a lot with my friends",
-                    "I think about different ways to win",
-                    "I try to make my launches stronger",
-                    "I come up with new and surprising moves",
-                    "I work hard every day to get better",
-                    "I battle tough opponents to improve",
-                    "I study how others play and make plans",
-                    "I focus on making my attacks stronger",
-                    "I practice staying calm under pressure",
-                    "I push myself to be the absolute best"
-                ]
-            },
-            {
-                question: "What would you do if your Beyblade broke?",
-                options: [
-                    "Feel sad but know I can fix it",
-                    "Think about how to make it stronger",
-                    "Get upset and want a new one right away",
-                    "See it as a chance to try something new",
-                    "Work hard to fix it and make it better",
-                    "Be disappointed but excited to improve it",
-                    "Carefully plan how to fix and upgrade it",
-                    "Want to make it even more powerful",
-                    "Stay calm and think about what to do",
-                    "Get very angry and demand the best new parts"
-                ]
-            },
-            {
-                question: "How do you feel about making friends with other bladers?",
-                options: [
-                    "It's the best part of Beyblading!",
-                    "It's nice, but winning is more important",
-                    "I'd rather just show them I'm better",
-                    "I don't really care about making friends",
-                    "It's good to have rivals and friends",
-                    "I like having friends to battle with",
-                    "It's okay, but I prefer to focus on myself",
-                    "Friends are good for practicing",
-                    "I enjoy the company of other skilled bladers",
-                    "I don't need friends, only strong opponents"
-                ]
-            },
-            {
-                question: "What's your Beyblade style?",
-                options: [
-                    "Lots of energy and never giving up",
-                    "Careful planning and smart moves",
-                    "Super strong attacks",
-                    "Unusual and surprising techniques",
-                    "Always trying to be better than before",
-                    "A mix of power and smart battling",
-                    "Clever tricks to outsmart opponents",
-                    "Pure power and strong launches",
-                    "Calm and adaptable",
-                    "Overwhelming force to crush opponents"
-                ]
-            },
-            {
-                question: "What do you think about during a Beyblade battle?",
-                options: [
-                    "How much fun I'm having",
-                    "What my opponent might do next",
-                    "How I can hit harder",
-                    "New moves I can try",
-                    "How I can do better than last time",
-                    "How to win this battle",
-                    "The best way to beat my opponent",
-                    "Using all my power to win",
-                    "Staying focused and calm",
-                    "Defeating my opponent completely"
-                ]
-            },
-            {
-                question: "What's your biggest dream in Beyblading?",
-                options: [
-                    "To have fun and make lots of friends",
-                    "To be known as the smartest blader",
-                    "To be the strongest blader ever",
-                    "To create amazing new techniques",
-                    "To keep getting better every day",
-                    "To be the world champion",
-                    "To outsmart every opponent",
-                    "To have the most powerful Beyblade",
-                    "To master every aspect of Beyblading",
-                    "To defeat everyone and be the ultimate blader"
-                ]
-            }
-        ];
-
-        const characters = [
-            "Valt Aoi",
-            "Shu Kurenai",
-            "Rantaro Kiyama",
-            "Free De La Hoya",
-            "Lui Shirosagi",
-            "Dante Koryu",
-            "Ranjiro Kiyama",
-            "Delta Zakuro",
-            "Lodin Haijima",
-            "Lane Valhalla"
-        ];
-
-        const characterDescriptions = [
-            "You're like Valt Aoi! You love Beyblading and having fun with friends. You never give up and always try your best.",
-            "You're like Shu Kurenai! You're calm and smart in battles. You make good plans and are a great leader.",
-            "You're like Rantaro Kiyama! You're strong and loyal. You face challenges head-on and are a good friend.",
-            "You're like Free De La Hoya! You're confident and do things your own way. You're very skilled and a bit mysterious.",
-            "You're like Lui Shirosagi! You're very strong and proud. You always want to be the best and work hard to stay on top.",
-            "You're like Dante Koryu! You're passionate about Beyblading and always want to get better. You feel like you should win, but you learn from losses.",
-            "You're like Ranjiro Kiyama! You're talented and strong, always trying to be the best. You enjoy having good rivals to battle against.",
-            "You're like Delta Zakuro! You believe in being the best and shine bright. You're great at making smart plans in battles.",
-            "You're like Lodin Haijima! You focus on being very strong and powerful. You like using strong launchers and powerful attacks.",
-            "You're like Lane Valhalla! You always want to be the best and don't mind if other Beys break. You care most about your own Bey and winning."
-        ];
-
-        const quizContainer = document.getElementById('quiz');
-        const submitButton = document.getElementById('submit');
-        const resultContainer = document.getElementById('result');
-
-        function buildQuiz() {
-            questions.forEach((question, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.classList.add('question');
-                questionDiv.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
-                
-                const optionsDiv = document.createElement('div');
-                optionsDiv.classList.add('options');
-                
-                question.options.forEach((option, optionIndex) => {
-                    const label = document.createElement('label');
-                    label.classList.add('option');
-                    label.innerHTML = `
-                        <input type="radio" name="question${index}" value="${optionIndex}">
-                        ${option}
-                    `;
-                    optionsDiv.appendChild(label);
-                });
-                
-                questionDiv.appendChild(optionsDiv);
-                quizContainer.appendChild(questionDiv);
-            });
+        function showResult() {
+            const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map(q => 
+                document.querySelector(`input[name="${q}"]:checked`)?.value
+            );
             
-            submitButton.style.display = 'block';
-        }
+            if (answers.includes(undefined)) {
+                alert("Please answer all questions!");
+                return;
+            }
 
-        function showResults() {
-            const answerContainers = quizContainer.querySelectorAll('.options');
-            let characterScores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            const counts = answers.reduce((acc, val) => {
+                acc[val] = (acc[val] || 0) + 1;
+                return acc;
+            }, {});
 
-            answerContainers.forEach((answerContainer, questionIndex) => {
-                const selectedOption = answerContainer.querySelector(`input[name="question${questionIndex}"]:checked`);
-                if (selectedOption) {
-                    characterScores[parseInt(selectedOption.value)]++;
-                }
-            });
+            const maxCount = Math.max(...Object.values(counts));
+            const result = Object.keys(counts).find(key => counts[key] === maxCount);
 
-            const maxScore = Math.max(...characterScores);
-            const characterIndex = characterScores.indexOf(maxScore);
+            const characters = {
+                a: "Valt Aoi",
+                b: "Shu Kurenai",
+                c: "Rantaro Kiyama",
+                d: "Lui Shirosagi",
+                e: "Free De La Hoya"
+            };
 
-            resultContainer.innerHTML = `
-                <h2>You are most like ${characters[characterIndex]}!</h2>
-                <p>${characterDescriptions[characterIndex]}</p>
+            const descriptions = {
+                a: "You're Valt Aoi! You're full of energy and never give up. You love beyblading and making friends. When you lose, it makes you want to try even harder!",
+                b: "You're Shu Kurenai! You're cool and smart in battles. You want to be the very best and you plan your moves carefully. You're a natural leader that others look up to.",
+                c: "You're Rantaro Kiyama! You're loyal and face challenges head-on. You might get frustrated when you lose, but you always bounce back quickly. You're a great friend to have!",
+                d: "You're Lui Shirosagi! You're very strong and proud of your skills. You always want to win and show how powerful you are. You work hard on having the strongest attacks.",
+                e: "You're Free De La Hoya! You're very skilled and calm during battles. You like to do things your own way and rely on your own strength. Your beyblades are special because they can steal spin from others."
+            };
+
+            document.getElementById('result').innerHTML = `
+                <h2>You are ${characters[result]}!</h2>
+                <p>${descriptions[result]}</p>
             `;
-            resultContainer.style.display = 'block';
-            submitButton.style.display = 'none';
+            document.getElementById('result').style.display = 'block';
         }
-
-        buildQuiz();
-
-        submitButton.addEventListener('click', showResults);
     </script>
 </body>
 </html>
